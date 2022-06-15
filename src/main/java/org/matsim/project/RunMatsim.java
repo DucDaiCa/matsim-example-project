@@ -39,6 +39,7 @@ import org.matsim.core.controler.OutputDirectoryHierarchy.OverwriteFileSetting;
 import org.matsim.core.replanning.strategies.DefaultPlanStrategiesModule;
 import org.matsim.core.scenario.ScenarioUtils;
 import org.matsim.core.utils.collections.CollectionUtils;
+import org.matsim.prepare.ChangeFreespeed;
 import org.matsim.vehicles.VehicleType;
 import org.matsim.vehicles.VehicleUtils;
 import org.matsim.vis.otfvis.OTFVisConfigGroup;
@@ -70,9 +71,7 @@ public class RunMatsim{
 		
 		Scenario scenario = ScenarioUtils.loadScenario(config) ;
 
-		// possibly modify scenario here
-		
-		// ---
+		ChangeFreespeed.changeNetwork(scenario.getNetwork());
 		
 		Controler controler = new Controler( scenario ) ;
 		
