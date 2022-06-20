@@ -29,6 +29,19 @@
 		<param name = "snapshotperiod"	value = "00:00:00"/> <!-- 00:00:00 means NO snapshot writing -->
 	</module>
 
+	<module name="planscalcroute" >
+		<!-- Defines how access and egress to main mode is simulated. Either of [none, accessEgressModeToLink, walkConstantTimeToLink, accessEgressModeToLinkPlusTimeConstant], Current default=none which means no access or egress trips are simulated. -->
+		<param name="accessEgressType" value="accessEgressModeToLink" />
+		<!-- All the modes for which the router is supposed to generate network routes (like car) -->
+		<param name="networkModes" value="car,ride,bike" />
+		<parameterset type="teleportedModeParameters" >
+			<param name="beelineDistanceFactor" value="1.1" />
+			<param name="mode" value="walk" />
+			<!-- Speed for a teleported mode. Travel time = (<beeline distance> * beelineDistanceFactor) / teleportedModeSpeed. Insert a line like this for every such mode. -->
+			<param name="teleportedModeSpeed" value="1.39" />
+		</parameterset>
+	</module>
+
 	<module name="planCalcScore">
 		<param name="learningRate" value="1.0" />
 		<param name="BrainExpBeta" value="2.0" />
